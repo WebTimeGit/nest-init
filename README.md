@@ -2,72 +2,96 @@
   <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
 </p>
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
-
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
+<p align="center">A NestJS project template with TypeORM, JWT-based authentication, and email-based login.</p>
+<p align="center">
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
 <a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
 </p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
 
 ## Description
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+This project is a backend application built using the [NestJS](https://nestjs.com/) framework. It includes pre-configured features like TypeORM for database management, JWT authentication, and email-based user login.
+
+## Features
+
+- **Database**: TypeORM integration for relational databases like PostgreSQL.
+- **Authentication**: Secure JWT-based authentication.
+- **Email-based Login**: Users can register and log in using their email address.
+- **Scalable Architecture**: Organized controllers, services, and modules.
+- **Tooling**: Includes ESLint, Prettier, Jest, and Husky for linting, formatting, testing, and pre-commit hooks.
 
 ## Installation
 
-```bash
-$ npm install
-```
+1. Clone the repository:
+   git clone https://github.com/WebTimeGit/nest-init.git
+   cd nest-init
+
+2. Install dependencies:
+   npm install
+
+3. Set up the `.env` file in the root directory with the following variables:
+
+    JWT_SECRET=your_jwt_secret
+    ENCRYPTION_KEY=
+    SESSION_SECRET=
+    
+    MONGODB_URI=mongodb://localhost:27017/simplApp
+    POSTGRESQL_DB=your_db_name
+    POSTGRESQL_HOST=localhost
+    POSTGRESQL_PORT=5432
+    POSTGRESQL_USER=your_db_user
+    POSTGRESQL_PASS=your_db_password
+
+   Replace `your_db_user`, `your_db_password`, `your_db_name`, and `your_jwt_secret` with actual values.
+
+4. Run database migrations:
+   npm run typeorm migration:run
 
 ## Running the app
 
-```bash
-# development
-$ npm run start
+Development:
+   npm run start
 
-# watch mode
-$ npm run start:dev
+Watch mode:
+   npm run start:dev
 
-# production mode
-$ npm run start:prod
-```
+Production:
+   npm run start:prod
 
 ## Test
 
-```bash
-# unit tests
-$ npm run tests
+Unit tests:
+   npm run test
 
-# e2e tests
-$ npm run tests:e2e
+E2E tests:
+   npm run test:e2e
 
-# tests coverage
-$ npm run tests:cov
-```
+Test coverage:
+   npm run test:cov
 
-## Support
+## API Overview
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+### Authentication
 
-## Stay in touch
+**Register**: POST /auth/register  
+Payload:  
+{  
+  "email": "user@example.com",  
+  "password": "yourpassword"  
+}  
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+**Login**: POST /auth/login  
+Payload:  
+{  
+  "email": "user@example.com",  
+  "password": "yourpassword"  
+}  
+Response:  
+{  
+  "accessToken": "your_jwt_token"  
+}
 
 ## License
 
-Nest is [MIT licensed](LICENSE).
+This project is [UNLICENSED](LICENSE).
